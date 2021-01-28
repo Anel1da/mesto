@@ -11,3 +11,4 @@
  * Работа с Git
 
 *Ссылка на проект на GithabPages*
+ https://anel1da.github.io/mesto/.
