@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 
@@ -18,10 +17,10 @@
             <img class="profile__photo" src="./images/avatar.jpg" alt="Фото Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button" type="button" area-label="Редактировать профиль"></button>
+                <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
                 <p class="profile__job">Исследователь океана</p>
             </div>
-            <button class="profile__add-button" type="button" area-label="Добавить место"></button>
+            <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
         </section>
         <section class="places">
             <figure class="place">
@@ -29,7 +28,7 @@
                 <figcaption class="place__discription">
                     <p class="place__title">Карачаевск</p>
                     <button class="place__like-icon place__like-icon_liked" type="button"
-                        area-label="Мне нравится"></button>
+                        aria-label="Мне нравится"></button>
                 </figcaption>
             </figure>
             <figure class="place">
@@ -37,7 +36,7 @@
                 <figcaption class="place__discription">
                     <p class="place__title">Гора Эльбрус</p>
                     <button class="place__like-icon place__like-icon_liked" type="button"
-                        area-label="Мне нравится"></button>
+                        aria-label="Мне нравится"></button>
                 </figcaption>
             </figure>
             <figure class="place">
@@ -45,7 +44,7 @@
                 <figcaption class="place__discription">
                     <p class="place__title">Домбай</p>
                     <button class="place__like-icon place__like-icon_liked" type="button"
-                        area-label="Мне нравится"></button>
+                        aria-label="Мне нравится"></button>
                 </figcaption>
             </figure>
             <figure class="place">
@@ -53,14 +52,14 @@
                 <figcaption class="place__discription">
                     <p class="place__title">Гора Эльбрус</p>
                     <button class="place__like-icon place__like-icon_liked" type="button"
-                        area-label="Мне нравится"></button>
+                        aria-label="Мне нравится"></button>
                 </figcaption>
             </figure>
             <figure class="place">
                 <p class="place__image"> <img src="./images/dombay.png" alt="Пик горы Домбай"></p>
                 <figcaption class="place__discription">
                     <p class="place__title">Домбай</p>
-                    <button class="place__like-icon" type="button" area-label="Мне нравится"></button>
+                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
                 </figcaption>
             </figure>
             <figure class="place">
@@ -68,8 +67,9 @@
                 <figcaption class="place__discription">
                     <p class="place__title">Карачаево-Черкесия</p>
                     <button class="place__like-icon place__like-icon_liked" type="button"
-                        area-label="Мне нравится"></button>
+                        aria-label="Мне нравится"></button>
                 </figcaption>
+            </figure>
         </section>
         <footer class="footer">
             <p class="fooret__copyright">&copy;2021 Mesto Russia</p>
@@ -78,12 +78,12 @@
         <section class="popup">
             <div class="popup__container">
                 <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
-                <h1 class="popup__title">Редактировать профиль</h1>
-                <form action="" class="form" name="edit">
-                    <input id="name" class="popup__input popup__input_name" type="text" name="name" value="Жак-Ив Кусто" minlength="2"
-                        maxlength="30" required>
-                    <input id="job" class="popup__input popup__input_job" type="text" name="job" value="Исследователь океана"
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form action="input" class="form" name="edit">
+                    <input id="name" class="popup__input popup__input_name" type="text" name="name" value="Жак-Ив Кусто"
                         minlength="2" maxlength="30" required>
+                    <input id="job" class="popup__input popup__input_job" type="text" name="job"
+                        value="Исследователь океана" minlength="2" maxlength="30" required>
                     <button id="submit" class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
