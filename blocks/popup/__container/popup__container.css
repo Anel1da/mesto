@@ -5,7 +5,14 @@
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding: 34px 36px 37px;
+<<<<<<< HEAD
     margin: auto;
+=======
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+>>>>>>> 46e372c584652b88d2ad5659f2a777b7cf5bdab0
 }
 
 @media (max-width: 767px) {
