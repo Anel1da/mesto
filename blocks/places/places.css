@@ -17,6 +17,5 @@
     .places {
         grid-template-columns: repeat(1, 282px);
         max-width: 282px;
-        margin: 0 auto;
     }
 }

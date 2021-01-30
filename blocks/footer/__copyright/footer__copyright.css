@@ -1,4 +1,4 @@
-.fooret__copyright {
+.footer__copyright {
     font-weight: 400;
     font-size: 18px;
     color: #545454;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 767px) {
-    .fooret__copyright {
+    .footer__copyright {
         font-size: 14px;
         margin: 48px auto 36px;
     }

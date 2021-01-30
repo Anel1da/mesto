@@ -4,6 +4,7 @@
     height: 33px;
     background-repeat: no-repeat;
     background-size: contain;
+    padding-bottom: 41px;
 }
 
 @media (max-width: 1023px) {
@@ -11,5 +12,6 @@
         width: 103.74px;
         height: 24.4px;
         margin-left: 27px;
+        padding-bottom: 31.6px;
     }
 }

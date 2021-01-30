@@ -10,7 +10,7 @@
 
 .place__like-icon:hover {
     outline: none;
-    opacity: .6;
+    opacity: .5;
 }
 
 .place__like-icon:focus {

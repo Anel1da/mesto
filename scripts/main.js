@@ -1,30 +1,37 @@
-//закрытие и открытие попап
-const popup = document.querySelector(".popup");
-const popupOpenButton = document.querySelector(".profile__edit-button");
-const popupCloseButton = popup.querySelector(".popup__close-button");
+// открытие и закрытие попап
+let popup = document.querySelector(".popup");
+let popupOpenButton = document.querySelector(".profile__edit-button");
+let popupCloseButton = popup.querySelector(".popup__close-button");
 
-const togglePopup = function () {
-    popup.classList.toggle("popup_opened");
-}
-
-popupOpenButton.addEventListener("click", togglePopup);
-popupCloseButton.addEventListener("click", togglePopup);
-
-//редактирование информации профиля
-
+// редактирование информации профиля
 let formElement = document.querySelector(".form")
-let nameInput = formElement.querySelector(".popup__input_name")
-let jobInput = formElement.querySelector(".popup__input_job")
+let nameInput = formElement.querySelector(".popup__input_type_name")
+let jobInput = formElement.querySelector(".popup__input_type_job")
+let nameParagraph = document.querySelector(".profile__name");
+let jobParagraph = document.querySelector(".profile__job");
+let ClosePopup = function () { 
+  popup.classList.toggle("popup_opened");
+}
+let OpenPopup = function () { 
+    popup.classList.toggle("popup_opened");
+    nameInput.value = nameParagraph.textContent;
+    jobInput.value = jobParagraph.textContent;
+  }
 
-function formSubmitHandler(evt) {
+
+//отправка формы редактирования информации профиля
+
+function submitForm(evt) {
     evt.preventDefault();
-
-    let nameParagraph = document.querySelector(".profile__name");
-    let jobParagraph = document.querySelector(".profile__job");
 
     nameParagraph.textContent = nameInput.value;
     jobParagraph.textContent = jobInput.value;
-
-    popup.classList.toggle("popup_opened");
+    ClosePopup();
 }
-formElement.addEventListener('submit', formSubmitHandler);
+
+//слушатели  - открытие и закрытие попап
+popupOpenButton.addEventListener("click", OpenPopup);
+popupCloseButton.addEventListener("click", ClosePopup);
+
+//слушатели  - отпрака формы
+formElement.addEventListener('submit', submitForm);
