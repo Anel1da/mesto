@@ -8,9 +8,9 @@
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
-    position: relative;
-    bottom: 74px;
-    left: 398px;
+    position: absolute;
+    top: -40px;
+    right: -40px;
     outline: none;
     cursor: pointer;
 }
@@ -25,6 +25,6 @@
         background-image: url(../../../images/Close_Icon.svg);
         width: 26px;
         height: 26px;
-        left: 234px;
+        right: 0;
     }
 }
