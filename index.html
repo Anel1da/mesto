@@ -23,76 +23,41 @@
             <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
         </section>
         <section class="places">
-            <!--  <figure class="place">
-                <img class="place__image" src="./images/karachevsk.png" alt="Сентинский храм в Карачаевске">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Карачаевск</h2>
-                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure>
-            <figure class="place">
-                <img class="place__image" src="./images/elbrus.png" alt="Гора Эльбрус">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Гора Эльбрус</h2>
-                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure>
-            <figure class="place">
-                <img class="place__image" src="./images/dombay.png" alt="Пик горы Домбай">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Домбай</h2>
+            <template class="template">
+                <figure class="place">
+                    <img class="place__image" src="" alt="">
+                    <figcaption class="place__discription">
+                        <h2 class="place__title"></h2>
                         <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure>
-            <figure class="place">
-                <img class="place__image" src="./images/elbrus.png" alt="Гора Эльбрус">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Гора Эльбрус</h2>
-                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure>
-            <figure class="place">
-                <img class="place__image" src="./images/dombay.png" alt="Пик горы Домбай">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Домбай</h2>
-                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure>
-            <figure class="place">
-                <img class="place__image" src="./images/karachevsk.png" alt="Сентинский храм в Карачаевске">
-                <figcaption class="place__discription">
-                    <h2 class="place__title">Карачаево-Черкесия</h2>
-                    <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                </figcaption>
-            </figure> -->
+                    </figcaption>
+                </figure>
+            </template>
         </section>
-
-
-        <template class="template">
-    <figure class="place">
-        <img class="place__image" src="./images/karachevsk.png" alt="Сентинский храм в Карачаевске">
-        <figcaption class="place__discription">
-            <h2 class="place__title">Карачаево-Черкесия</h2>
-            <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-        </figcaption>
-    </figure>
-
-</template>
-
-
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
     </footer>
-
-    <section class="popup">
+    <section class="popup popup_edit-profile">
         <div class="popup__container">
-            <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
+            <button class="popup__close-button popup__close-button_edit-profile" type="button" aria-label="Закрыть окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form action="input" class="form" name="edit">
-                <input id="name" class="popup__input popup__input_type_name" type="text" name="name" value="" minlength="2" maxlength="30" required>
+                <input id="name" class="popup__input  popup__input_type_name" type="text" name="name" value="" minlength="2" maxlength="30" required>
                 <input id="job" class="popup__input popup__input_type_job" type="text" name="job" value="" minlength="2" maxlength="30" required>
                 <button id="submit" class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
+
+    <section class="popup popup_add-place">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_add-place" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form action="input" class="form" name="add-place">
+                <input id="place-title" class="popup__input popup__input_add-place popup__input_type_place-title" type="text" name="placeTitle" value="Название" minlength="2" maxlength="30" required>
+                <input id="place-link" class="popup__input popup__input_add-place popup__input_type_place-link" type="url" name="placeImage" value="Ссылка на картинку" required>
+                <button id="submit" class="popup__submit-button" type="submit">Создать</button>
             </form>
         </div>
     </section>

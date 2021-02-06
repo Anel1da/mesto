@@ -1,7 +1,7 @@
-// открытие и закрытие попап
-let popup = document.querySelector(".popup");
-let popupOpenButton = document.querySelector(".profile__edit-button");
-let popupCloseButton = popup.querySelector(".popup__close-button");
+// открытие и закрытие попап редактирования профиля
+let popupEditProfile = document.querySelector(".popup_edit-profile");
+let editProfileOpenButton = document.querySelector(".profile__edit-button");
+let editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
 
 // редактирование информации профиля
 let formElement = document.querySelector(".form")
@@ -10,14 +10,13 @@ let jobInput = formElement.querySelector(".popup__input_type_job")
 let nameParagraph = document.querySelector(".profile__name");
 let jobParagraph = document.querySelector(".profile__job");
 let closePopup = function() {
-    popup.classList.remove("popup_opened");
+    popupEditProfile.classList.remove("popup_opened");
 }
 let openPopup = function() {
-    popup.classList.add("popup_opened");
+    popupEditProfile.classList.add("popup_opened");
     nameInput.value = nameParagraph.textContent;
     jobInput.value = jobParagraph.textContent;
 }
-
 
 //отправка формы редактирования информации профиля
 
@@ -30,8 +29,8 @@ function submitForm(evt) {
 }
 
 //слушатели  - открытие и закрытие попап
-popupOpenButton.addEventListener("click", openPopup);
-popupCloseButton.addEventListener("click", closePopup);
+editProfileOpenButton.addEventListener("click", openPopup);
+editProfileCloseButton.addEventListener("click", closePopup);
 
 //слушатели  - отправка формы
 formElement.addEventListener('submit', submitForm);
@@ -90,3 +89,19 @@ function render() {
 
 }
 render()
+
+//открытие и закрытие попап добавления места
+let popupAddPlace = document.querySelector(".popup_add-place");
+let addPlaceOpenButton = document.querySelector(".profile__add-button");
+let addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
+let addPlaceClosePopup = function() {
+    popupAddPlace.classList.remove("popup_opened");
+}
+let addPlaceOpenPopup = function() {
+    popupAddPlace.classList.add("popup_opened");
+
+}
+
+//слушатели на открытие и закрытие добавления места
+addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
+addPlaceCloseButton.addEventListener("click", addPlaceClosePopup);
