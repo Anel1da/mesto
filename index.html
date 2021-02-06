@@ -23,7 +23,7 @@
             <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
         </section>
         <section class="places">
-            <figure class="place">
+            <!--  <figure class="place">
                 <img class="place__image" src="./images/karachevsk.png" alt="Сентинский храм в Карачаевске">
                 <figcaption class="place__discription">
                     <h2 class="place__title">Карачаевск</h2>
@@ -64,8 +64,22 @@
                     <h2 class="place__title">Карачаево-Черкесия</h2>
                     <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
                 </figcaption>
-            </figure>
+            </figure> -->
         </section>
+
+
+        <template class="template">
+    <figure class="place">
+        <img class="place__image" src="./images/karachevsk.png" alt="Сентинский храм в Карачаевске">
+        <figcaption class="place__discription">
+            <h2 class="place__title">Карачаево-Черкесия</h2>
+            <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
+        </figcaption>
+    </figure>
+
+</template>
+
+
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
@@ -76,10 +90,8 @@
             <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form action="input" class="form" name="edit">
-                <input id="name" class="popup__input popup__input_type_name" type="text" name="name" value=""
-                    minlength="2" maxlength="30" required>
-                <input id="job" class="popup__input popup__input_type_job" type="text" name="job"
-                    value="" minlength="2" maxlength="30" required>
+                <input id="name" class="popup__input popup__input_type_name" type="text" name="name" value="" minlength="2" maxlength="30" required>
+                <input id="job" class="popup__input popup__input_type_job" type="text" name="job" value="" minlength="2" maxlength="30" required>
                 <button id="submit" class="popup__submit-button" type="submit">Сохранить</button>
             </form>
         </div>
