@@ -16,9 +16,3 @@
 .place__like-icon:focus {
     outline: none;
 }
-
-.place__like-icon:active {
-    outline: none;
-    opacity: 1;
-    background-image: url(../../../images/like-icon_liked.svg);
-}

@@ -77,17 +77,32 @@ function getPlace(item) {
     let placeTitle = newPlace.querySelector(".place__title");
     let placeImage = newPlace.querySelector(".place__image");
     let removeButton = newPlace.querySelector(".place__remove-icon");
-
+    let likeButton = newPlace.querySelector(".place__like-icon");
 
     placeTitle.textContent = item.name;
     placeImage.src = item.link;
     placeImage.alt = item.alt;
 
+    // функция удаления карточки
+
     function removePlace() {
-        let listItem = removeButton.closest(".place")
+        let listItem = removeButton.closest(".place");
         listItem.remove()
     }
+
+    //функция добавления лайка  
+
+    function addLike(evt) {
+        evt.target.classList.toggle("place__like-icon_liked");
+    }
+
+
+    likeButton.addEventListener("click", addLike)
     removeButton.addEventListener("click", removePlace)
+
+
+
+
 
     return newPlace;
 
