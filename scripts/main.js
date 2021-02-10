@@ -4,9 +4,9 @@ let editProfileOpenButton = document.querySelector(".profile__edit-button");
 let editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
 
 // редактирование информации профиля
-let formElement = document.querySelector(".form")
-let nameInput = formElement.querySelector(".popup__input_type_name")
-let jobInput = formElement.querySelector(".popup__input_type_job")
+let formEditProfile = document.querySelector(".form_edit-profile")
+let nameInput = formEditProfile.querySelector(".popup__input_type_name")
+let jobInput = formEditProfile.querySelector(".popup__input_type_job")
 let nameParagraph = document.querySelector(".profile__name");
 let jobParagraph = document.querySelector(".profile__job");
 let closePopup = function() {
@@ -33,12 +33,12 @@ editProfileOpenButton.addEventListener("click", openPopup);
 editProfileCloseButton.addEventListener("click", closePopup);
 
 //слушатели  - отправка формы
-formElement.addEventListener('submit', submitForm);
+formEditProfile.addEventListener('submit', submitForm);
 
 
-const placesContainer = document.querySelector(".places");
-const templatePlace = document.querySelector("template");
-const initialCards = [{
+let placesContainer = document.querySelector(".places");
+let templatePlace = document.querySelector("template");
+let initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
         alt: "Гора Архыз"
@@ -73,18 +73,29 @@ const initialCards = [{
 
 
 function getPlace(item) {
-    const newPlace = templatePlace.content.cloneNode(true);
-    const headerPlace = newPlace.querySelector(".place__title");
-    const imagePlace = newPlace.querySelector(".place__image");
-    headerPlace.textContent = item.name;
-    imagePlace.src = item.link;
-    imagePlace.alt = item.alt;
+    let newPlace = templatePlace.content.cloneNode(true);
+    let placeTitle = newPlace.querySelector(".place__title");
+    let placeImage = newPlace.querySelector(".place__image");
+    let removeButton = newPlace.querySelector(".place__remove-icon");
+
+
+    placeTitle.textContent = item.name;
+    placeImage.src = item.link;
+    placeImage.alt = item.alt;
+
+    function removePlace() {
+        let listItem = removeButton.closest(".place")
+        listItem.remove()
+    }
+    removeButton.addEventListener("click", removePlace)
 
     return newPlace;
+
 }
 
+
 function render() {
-    const initialPlaces = initialCards.map(getPlace)
+    let initialPlaces = initialCards.map(getPlace)
     placesContainer.append(...initialPlaces);
 
 }
@@ -102,6 +113,27 @@ let addPlaceOpenPopup = function() {
 
 }
 
-//слушатели на открытие и закрытие добавления места
+
+let formAddPlace = document.querySelector(".form_add-place")
+let placeTitleInput = document.querySelector(".popup__input_type_place-title")
+let placeImageInput = document.querySelector(".popup__input_type_place-image")
+
+
+
+//отправка формы добавления места
+
+function AddPlace(evt) {
+    evt.preventDefault();
+
+    const newPlace = getPlace({ name: placeTitleInput.value, link: placeImageInput.value });
+    placesContainer.prepend(newPlace);
+    placeTitleInput.value = "";
+    placeImageInput.value = "";
+    addPlaceClosePopup();
+}
+
+
+//слушатели на открытие и закрытие попап добавления места, jотправки формы
 addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
 addPlaceCloseButton.addEventListener("click", addPlaceClosePopup);
+formAddPlace.addEventListener("submit", AddPlace)
