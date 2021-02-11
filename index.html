@@ -47,7 +47,7 @@
             <form class="form form_edit-profile " name="edit">
                 <input id="name" class="popup__input  popup__input_type_name" type="text" name="name" value="" minlength="2" maxlength="30" required>
                 <input id="job" class="popup__input popup__input_type_job" type="text" name="job" value="" minlength="2" maxlength="30" required>
-                <button id="submit" class="popup__submit-button" type="submit">Сохранить</button>
+                <button class="popup__submit-button" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
@@ -60,8 +60,20 @@
             <form class="form form_add-place" name="add-place">
                 <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="placeTitle" placeholder="Название" minlength="2" maxlength="30" required>
                 <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="placeImage" placeholder="Ссылка на картинку">
-                <button id="submit" class="popup__submit-button popup__submit-button_add-place" type="submit">Создать</button>
+                <button class="popup__submit-button popup__submit-button_add-place" type="submit">Создать</button>
             </form>
+        </div>
+    </section>
+
+    <section class="popup popup_preview">
+        <div class="popup__container popup__container_preview">
+            <button class="popup__close-button popup__close-button_preview" type="button" aria-label="Закрыть окно"></button>
+            <figure class="preview">
+                <img class="preview__image" src="#" alt="#">
+                <figcaption>
+                    <h2 class="preview__title"></h2>
+                </figcaption>
+            </figure>
         </div>
     </section>
     <script src="./scripts/main.js"></script>

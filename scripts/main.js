@@ -1,9 +1,9 @@
-// открытие и закрытие попап редактирования профиля
+//переменные открытие и закрытие попап редактирования профиля
 let popupEditProfile = document.querySelector(".popup_edit-profile");
 let editProfileOpenButton = document.querySelector(".profile__edit-button");
 let editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
 
-// редактирование информации профиля
+// переменные формы редактирования информации профиля
 let formEditProfile = document.querySelector(".form_edit-profile")
 let nameInput = formEditProfile.querySelector(".popup__input_type_name")
 let jobInput = formEditProfile.querySelector(".popup__input_type_job")
@@ -18,23 +18,43 @@ let openPopup = function() {
     jobInput.value = jobParagraph.textContent;
 }
 
+// переменные открытия и закрытия попап добавления места
+let popupAddPlace = document.querySelector(".popup_add-place");
+let addPlaceOpenButton = document.querySelector(".profile__add-button");
+let addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
+let addPlaceClosePopup = function() {
+    popupAddPlace.classList.remove("popup_opened");
+}
+let addPlaceOpenPopup = function() {
+    popupAddPlace.classList.add("popup_opened");
+}
+
+//переменные добавление места
+let formAddPlace = document.querySelector(".form_add-place")
+let placeTitleInput = document.querySelector(".popup__input_type_place-title")
+let placeImageInput = document.querySelector(".popup__input_type_place-image")
+
+
+//переменные открытия и закрыти попап предпросмотра
+let popupPreview = document.querySelector(".popup_preview");
+let popupPreviewOpenButton = newPlace.querySelector(".place__image");
+let popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
+let popupPreviewImage = popupPreview.querySelector(".preview__image");
+let popupPreviewTitle = popupPreview.querySelector(".preview__title");
+
+
+
 //отправка формы редактирования информации профиля
 
 function submitForm(evt) {
     evt.preventDefault();
-
     nameParagraph.textContent = nameInput.value;
     jobParagraph.textContent = jobInput.value;
     closePopup();
 }
 
-//слушатели  - открытие и закрытие попап
-editProfileOpenButton.addEventListener("click", openPopup);
-editProfileCloseButton.addEventListener("click", closePopup);
 
-//слушатели  - отправка формы
-formEditProfile.addEventListener('submit', submitForm);
-
+//переменные массива с карточками
 
 let placesContainer = document.querySelector(".places");
 let templatePlace = document.querySelector("template");
@@ -72,6 +92,8 @@ let initialCards = [{
 ];
 
 
+// функция добавления  карточек
+
 function getPlace(item) {
     let newPlace = templatePlace.content.cloneNode(true);
     let placeTitle = newPlace.querySelector(".place__title");
@@ -96,16 +118,25 @@ function getPlace(item) {
         evt.target.classList.toggle("place__like-icon_liked");
     }
 
+    //превью карточки
 
+    let closePopup = function() {
+        popupPreview.classList.remove("popup_opened");
+    }
+    let previewPopup = function() {
+        popupPreview.classList.add("popup_opened");
+        popupPreviewImage.src = popupPreviewOpenButton.src;
+        popupPreviewTitle.textContent = placeTitle.textContent;
+
+    }
+
+
+    popupPreviewCloseButton.addEventListener("click", closePopup)
+    popupPreviewOpenButton.addEventListener("click", previewPopup)
     likeButton.addEventListener("click", addLike)
     removeButton.addEventListener("click", removePlace)
 
-
-
-
-
     return newPlace;
-
 }
 
 
@@ -116,28 +147,10 @@ function render() {
 }
 render()
 
-//открытие и закрытие попап добавления места
-let popupAddPlace = document.querySelector(".popup_add-place");
-let addPlaceOpenButton = document.querySelector(".profile__add-button");
-let addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
-let addPlaceClosePopup = function() {
-    popupAddPlace.classList.remove("popup_opened");
-}
-let addPlaceOpenPopup = function() {
-    popupAddPlace.classList.add("popup_opened");
-
-}
-
-
-let formAddPlace = document.querySelector(".form_add-place")
-let placeTitleInput = document.querySelector(".popup__input_type_place-title")
-let placeImageInput = document.querySelector(".popup__input_type_place-image")
-
-
 
 //отправка формы добавления места
 
-function AddPlace(evt) {
+function addPlace(evt) {
     evt.preventDefault();
 
     const newPlace = getPlace({ name: placeTitleInput.value, link: placeImageInput.value });
@@ -148,7 +161,16 @@ function AddPlace(evt) {
 }
 
 
+
+
+//слушатели  - открытие и закрытие попап
+editProfileOpenButton.addEventListener("click", openPopup);
+editProfileCloseButton.addEventListener("click", closePopup);
+
+//слушатели  - отправка формы
+formEditProfile.addEventListener('submit', submitForm);
+/*  */
 //слушатели на открытие и закрытие попап добавления места, jотправки формы
 addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
 addPlaceCloseButton.addEventListener("click", addPlaceClosePopup);
-formAddPlace.addEventListener("submit", AddPlace)
+formAddPlace.addEventListener("submit", addPlace)
