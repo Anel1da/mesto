@@ -37,7 +37,6 @@ let placeImageInput = document.querySelector(".popup__input_type_place-image")
 
 //переменные открытия и закрыти попап предпросмотра
 let popupPreview = document.querySelector(".popup_preview");
-let popupPreviewOpenButton = newPlace.querySelector(".place__image");
 let popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
 let popupPreviewImage = popupPreview.querySelector(".preview__image");
 let popupPreviewTitle = popupPreview.querySelector(".preview__title");
@@ -100,6 +99,7 @@ function getPlace(item) {
     let placeImage = newPlace.querySelector(".place__image");
     let removeButton = newPlace.querySelector(".place__remove-icon");
     let likeButton = newPlace.querySelector(".place__like-icon");
+    let popupPreviewOpenButton = newPlace.querySelector(".place__image");
 
     placeTitle.textContent = item.name;
     placeImage.src = item.link;
