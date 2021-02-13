@@ -1,27 +1,17 @@
-//переменные открытие и закрытие попап редактирования профиля
+// открытие и закрытие попап редактирования профиля
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const editProfileOpenButton = document.querySelector(".profile__edit-button");
 const editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
 
-// переменные формы редактирования информации профиля
+//  редактирование информации профиля
 const formEditProfile = document.querySelector(".form_edit-profile")
 const nameInput = formEditProfile.querySelector(".popup__input_type_name")
 const jobInput = formEditProfile.querySelector(".popup__input_type_job")
 const nameParagraph = document.querySelector(".profile__name");
 const jobParagraph = document.querySelector(".profile__job");
-
-
-
-
 const closeProfilePopup = function() {
     closePopup(popupEditProfile)
 }
-
-function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-}
-
-
 
 const openProfilePopup = function() {
     openPopup(popupEditProfile)
@@ -29,13 +19,8 @@ const openProfilePopup = function() {
     jobInput.value = jobParagraph.textContent;
 }
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-}
 
-
-
-// переменные открытия и закрытия попап добавления места
+//  открытие и закрытие попап добавления места
 const popupAddPlace = document.querySelector(".popup_add-place");
 const addPlaceOpenButton = document.querySelector(".profile__add-button");
 const addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
@@ -46,18 +31,28 @@ const addPlaceOpenPopup = function() {
     openPopup(popupAddPlace)
 }
 
-//переменные добавление места
+//добавление места
 const formAddPlace = document.querySelector(".form_add-place")
 const placeTitleInput = document.querySelector(".popup__input_type_place-title")
 const placeImageInput = document.querySelector(".popup__input_type_place-image")
 
-
-//переменные открытия и закрыти попап предпросмотра
+//открытие и закрыте попап предпросмотра
 const popupPreview = document.querySelector(".popup_preview");
 const popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
 const popupPreviewImage = popupPreview.querySelector(".preview__image");
 const popupPreviewTitle = popupPreview.querySelector(".preview__title");
 
+
+
+
+// функции открытия и закрытия попапов
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+}
 
 
 //отправка формы редактирования информации профиля
@@ -66,8 +61,9 @@ function submitForm(evt) {
     evt.preventDefault();
     nameParagraph.textContent = nameInput.value;
     jobParagraph.textContent = jobInput.value;
-    closePopup();
+    closeProfilePopup()
 }
+
 
 
 //переменные массива с карточками
