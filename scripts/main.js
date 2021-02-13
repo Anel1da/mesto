@@ -1,46 +1,62 @@
 //переменные открытие и закрытие попап редактирования профиля
-let popupEditProfile = document.querySelector(".popup_edit-profile");
-let editProfileOpenButton = document.querySelector(".profile__edit-button");
-let editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
+const popupEditProfile = document.querySelector(".popup_edit-profile");
+const editProfileOpenButton = document.querySelector(".profile__edit-button");
+const editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
 
 // переменные формы редактирования информации профиля
-let formEditProfile = document.querySelector(".form_edit-profile")
-let nameInput = formEditProfile.querySelector(".popup__input_type_name")
-let jobInput = formEditProfile.querySelector(".popup__input_type_job")
-let nameParagraph = document.querySelector(".profile__name");
-let jobParagraph = document.querySelector(".profile__job");
-let closePopup = function() {
-    popupEditProfile.classList.remove("popup_opened");
+const formEditProfile = document.querySelector(".form_edit-profile")
+const nameInput = formEditProfile.querySelector(".popup__input_type_name")
+const jobInput = formEditProfile.querySelector(".popup__input_type_job")
+const nameParagraph = document.querySelector(".profile__name");
+const jobParagraph = document.querySelector(".profile__job");
+
+
+
+
+const closeProfilePopup = function() {
+    closePopup(popupEditProfile)
 }
-let openPopup = function() {
-    popupEditProfile.classList.add("popup_opened");
+
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+}
+
+
+
+const openProfilePopup = function() {
+    openPopup(popupEditProfile)
     nameInput.value = nameParagraph.textContent;
     jobInput.value = jobParagraph.textContent;
 }
 
-// переменные открытия и закрытия попап добавления места
-let popupAddPlace = document.querySelector(".popup_add-place");
-let addPlaceOpenButton = document.querySelector(".profile__add-button");
-let addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
-let addPlaceClosePopup = function() {
-    popupAddPlace.classList.remove("popup_opened");
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
-let addPlaceOpenPopup = function() {
-    popupAddPlace.classList.add("popup_opened");
+
+
+
+// переменные открытия и закрытия попап добавления места
+const popupAddPlace = document.querySelector(".popup_add-place");
+const addPlaceOpenButton = document.querySelector(".profile__add-button");
+const addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
+const addPlaceClosePopup = function() {
+    closePopup(popupAddPlace)
+}
+const addPlaceOpenPopup = function() {
+    openPopup(popupAddPlace)
 }
 
 //переменные добавление места
-let formAddPlace = document.querySelector(".form_add-place")
-let placeTitleInput = document.querySelector(".popup__input_type_place-title")
-let placeImageInput = document.querySelector(".popup__input_type_place-image")
+const formAddPlace = document.querySelector(".form_add-place")
+const placeTitleInput = document.querySelector(".popup__input_type_place-title")
+const placeImageInput = document.querySelector(".popup__input_type_place-image")
 
 
 //переменные открытия и закрыти попап предпросмотра
-let popupPreview = document.querySelector(".popup_preview");
-let popupPreviewOpenButton = newPlace.querySelector(".place__image");
-let popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
-let popupPreviewImage = popupPreview.querySelector(".preview__image");
-let popupPreviewTitle = popupPreview.querySelector(".preview__title");
+const popupPreview = document.querySelector(".popup_preview");
+const popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
+const popupPreviewImage = popupPreview.querySelector(".preview__image");
+const popupPreviewTitle = popupPreview.querySelector(".preview__title");
 
 
 
@@ -56,8 +72,8 @@ function submitForm(evt) {
 
 //переменные массива с карточками
 
-let placesContainer = document.querySelector(".places");
-let templatePlace = document.querySelector("template");
+const placesContainer = document.querySelector(".places");
+const templatePlace = document.querySelector("template");
 let initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
@@ -95,11 +111,12 @@ let initialCards = [{
 // функция добавления  карточек
 
 function getPlace(item) {
-    let newPlace = templatePlace.content.cloneNode(true);
-    let placeTitle = newPlace.querySelector(".place__title");
-    let placeImage = newPlace.querySelector(".place__image");
-    let removeButton = newPlace.querySelector(".place__remove-icon");
-    let likeButton = newPlace.querySelector(".place__like-icon");
+    const newPlace = templatePlace.content.cloneNode(true);
+    const placeTitle = newPlace.querySelector(".place__title");
+    const placeImage = newPlace.querySelector(".place__image");
+    const removeButton = newPlace.querySelector(".place__remove-icon");
+    const likeButton = newPlace.querySelector(".place__like-icon");
+    const popupPreviewOpenButton = newPlace.querySelector(".place__image");
 
     placeTitle.textContent = item.name;
     placeImage.src = item.link;
@@ -120,19 +137,12 @@ function getPlace(item) {
 
     //превью карточки
 
-    let closePopup = function() {
-        popupPreview.classList.remove("popup_opened");
-    }
-    let previewPopup = function() {
-        popupPreview.classList.add("popup_opened");
-        popupPreviewImage.src = popupPreviewOpenButton.src;
-        popupPreviewTitle.textContent = placeTitle.textContent;
-
-    }
-
-
-    popupPreviewCloseButton.addEventListener("click", closePopup)
-    popupPreviewOpenButton.addEventListener("click", previewPopup)
+    popupPreviewCloseButton.addEventListener("click", () => { closePopup(popupPreview) })
+    popupPreviewOpenButton.addEventListener("click", () => {
+        openPopup(popupPreview)
+        popupPreviewImage.src = item.link;
+        popupPreviewTitle.textContent = item.name;
+    })
     likeButton.addEventListener("click", addLike)
     removeButton.addEventListener("click", removePlace)
 
@@ -163,14 +173,12 @@ function addPlace(evt) {
 
 
 
-//слушатели  - открытие и закрытие попап
-editProfileOpenButton.addEventListener("click", openPopup);
-editProfileCloseButton.addEventListener("click", closePopup);
-
-//слушатели  - отправка формы
-formEditProfile.addEventListener('submit', submitForm);
-/*  */
-//слушатели на открытие и закрытие попап добавления места, jотправки формы
+//слушатели  - открытие и закрытие попапов
+editProfileOpenButton.addEventListener("click", openProfilePopup);
+editProfileCloseButton.addEventListener("click", closeProfilePopup);
 addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
 addPlaceCloseButton.addEventListener("click", addPlaceClosePopup);
 formAddPlace.addEventListener("submit", addPlace)
+
+//слушатели  - отправка формы
+formEditProfile.addEventListener('submit', submitForm);
