@@ -70,7 +70,7 @@ function submitForm(evt) {
 
 const placesContainer = document.querySelector(".places");
 const templatePlace = document.querySelector("template");
-let initialCards = [{
+const initialCards = [{
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
         alt: "Гора Архыз"
@@ -133,7 +133,7 @@ function getPlace(item) {
 
     //превью карточки
 
-    popupPreviewCloseButton.addEventListener("click", () => { closePopup(popupPreview) })
+
     popupPreviewOpenButton.addEventListener("click", () => {
         openPopup(popupPreview)
         popupPreviewImage.src = item.link;
@@ -175,6 +175,7 @@ editProfileCloseButton.addEventListener("click", closeProfilePopup);
 addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
 addPlaceCloseButton.addEventListener("click", addPlaceClosePopup);
 formAddPlace.addEventListener("submit", addPlace)
+popupPreviewCloseButton.addEventListener("click", () => { closePopup(popupPreview) })
 
 //слушатели  - отправка формы
 formEditProfile.addEventListener('submit', submitForm);
