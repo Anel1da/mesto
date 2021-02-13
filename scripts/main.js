@@ -121,7 +121,7 @@ function getPlace(item) {
     // функция удаления карточки
 
     function removePlace() {
-        let listItem = removeButton.closest(".place");
+        const listItem = removeButton.closest(".place");
         listItem.remove()
     }
 
@@ -147,7 +147,7 @@ function getPlace(item) {
 
 
 function render() {
-    let initialPlaces = initialCards.map(getPlace)
+    const initialPlaces = initialCards.map(getPlace)
     placesContainer.append(...initialPlaces);
 
 }
