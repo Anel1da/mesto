@@ -20,8 +20,10 @@ const setProfileInputs = () => {
     nameInput.value = nameParagraph.textContent;
     jobInput.value = jobParagraph.textContent;
 }
-
 setProfileInputs()
+
+
+
 const closeProfilePopup = function() {
     closePopup(popupEditProfile)
 }
@@ -50,15 +52,14 @@ const popupPreviewTitle = popupPreview.querySelector(".preview__title");
 
 
 
-// функции открытия и закрытия попапов
+// функции закрытия попапов c с помощью Esc и Click
 
 
-function closePopupWithEscape(evt) {
+function closePopupWithEscape(evt, formElement) {
     if (evt.key === "Escape") {
         const openedPopup = document.querySelector(".popup_opened")
         closePopup(openedPopup)
-            /*     const openedPopup = findOpenedPopup()
-                closePopup(openedPopup) */
+
     }
 }
 
@@ -69,6 +70,9 @@ function closePopupWithClick(evt) {
         closePopup(popupItem)
     }
 }
+
+
+// функции открытие попап
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -86,7 +90,7 @@ function closePopup(popup) {
 //отправка формы редактирования информации профиля
 
 function submitForm(evt) {
-
+    evt.preventDefault();
     nameParagraph.textContent = nameInput.value;
     jobParagraph.textContent = jobInput.value;
     closeProfilePopup()
@@ -185,6 +189,7 @@ render()
 //отправка формы добавления места
 
 function addPlace(evt) {
+    evt.preventDefault();
     const newPlace = getPlace({ name: placeTitleInput.value, link: placeImageInput.value });
     placesContainer.prepend(newPlace);
     placeTitleInput.value = "";
@@ -201,3 +206,5 @@ popupPreviewCloseButton.addEventListener("click", () => { closePopup(popupPrevie
 
 //слушатели  - отправка формы
 formEditProfile.addEventListener('submit', submitForm);
+
+formAddPlace.addEventListener("submit", addPlace)
