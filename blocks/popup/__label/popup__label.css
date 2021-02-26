@@ -1,0 +1,9 @@
+.popup__label {
+    position: relative;
+    display: block;
+    padding-top: 40px;
+}
+
+.popup__label:first-of-type {
+    padding-top: 0px;
+}
