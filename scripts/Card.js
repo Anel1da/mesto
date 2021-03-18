@@ -1,9 +1,10 @@
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, openPreviewPopup) {
         this._name = data.name
         this._image = data.link
         this._alt = data.alt
         this._cardSelector = cardSelector;
+        this._openPreviewPopup = openPreviewPopup;
 
     }
 
@@ -41,8 +42,7 @@ export default class Card {
         })
 
         this._popupPreviewOpenButton.addEventListener("click", () => {
-            this._previewCard(this._name, this._imag)
-
+            this._openPreviewPopup(this._name, this._image)
         })
     }
 
@@ -50,6 +50,7 @@ export default class Card {
     _removeCard() {
 
         this._element.remove()
+        this._element = null;
     }
 
     _likeCard() {
