@@ -1,16 +1,17 @@
 import { initialCards } from "./initialCards.js";
 import Card from "./Card.js";
-
+import FormValidator from "./FormValidator.js"
+import { validationSettings } from "./validationSettings.js"
 
 // переменные - открытие и закрытие попап редактирования профиля
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const editProfileOpenButton = document.querySelector(".profile__edit-button");
-const editProfileCloseButton = popupEditProfile.querySelector(".popup__close-button");
+
 
 //переменные -   открытие и закрытие попап добавления места
 const popupAddPlace = document.querySelector(".popup_add-place");
 const addPlaceOpenButton = document.querySelector(".profile__add-button");
-const addPlaceCloseButton = popupAddPlace.querySelector(".popup__close-button");
+
 
 //переменные добавления места
 const formAddPlace = document.querySelector(".form_add-place");
@@ -19,7 +20,6 @@ const placeImageInput = document.querySelector(".popup__input_type_place-image")
 
 //переменные -открытие и закрыте попап предпросмотра
 const popupPreview = document.querySelector(".popup_preview");
-const popupPreviewCloseButton = popupPreview.querySelector(".popup__close-button");
 const popupPreviewImage = popupPreview.querySelector(".preview__image");
 const popupPreviewTitle = popupPreview.querySelector(".preview__title");
 
@@ -117,6 +117,13 @@ function submitNewCard(evt) {
     placeImageInput.value = "";
     closePopup(popupAddPlace)
 }
+
+
+//работа с валидацией форм добавления места и редактирования профайла
+const addPlaceFormValidator = new FormValidator(validationSettings, formAddPlace)
+addPlaceFormValidator.enableValidation()
+const editProfileFormValidator = new FormValidator(validationSettings, formEditProfile)
+editProfileFormValidator.enableValidation()
 
 // слушатели
 editProfileOpenButton.addEventListener("click", openProfilePopup);
