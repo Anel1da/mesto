@@ -17,6 +17,8 @@ const addPlaceOpenButton = document.querySelector(".profile__add-button");
 const formAddPlace = document.querySelector(".form_add-place");
 const placeTitleInput = document.querySelector(".popup__input_type_place-title");
 const placeImageInput = document.querySelector(".popup__input_type_place-image");
+const placeContainer = document.querySelector('.places');
+const cardSelector = '.template_type_default';
 
 //переменные -открытие и закрыте попап предпросмотра
 const popupPreview = document.querySelector(".popup_preview");
@@ -64,17 +66,18 @@ function closePopupWithClick(evt) {
 
 
 //функции для работы с попап редактирования профиля
-const openProfilePopup = function() {
-    openPopup(popupEditProfile)
 
-}
 const setProfileInputs = () => {
     nameInput.value = nameParagraph.textContent;
     jobInput.value = jobParagraph.textContent;
 }
-setProfileInputs()
+const openProfilePopup = function() {
+    editProfileFormValidator.cleanErrors()
+    openPopup(popupEditProfile)
+    setProfileInputs()
+}
 
-function submitForm(evt) {
+function submitEditProfileForm(evt) {
     evt.preventDefault();
     nameParagraph.textContent = nameInput.value;
     jobParagraph.textContent = jobInput.value;
@@ -89,30 +92,38 @@ const closeProfilePopup = function() {
 
 // функция отрисовки изначальных
 initialCards.forEach((item) => {
-    const card = new Card(item, '.template_type_default', openPreviewPopup);
-    const cardElement = card.generateCard();
-    document.querySelector('.places').append(cardElement);
+    const newCard = createCard(item)
+    placeContainer.append(newCard);
 })
 
+function createCard(item) {
+    const card = new Card(item, cardSelector, openPreviewPopup);
+    const cardElement = card.generateCard();
+    return cardElement
+}
 
 // функция открытия попап-превью
-function openPreviewPopup(name, link) {
+function openPreviewPopup(name, link, alt) {
     popupPreviewImage.src = link;
+    popupPreviewImage.alt = alt;
     popupPreviewTitle.textContent = name;
     openPopup(popupPreview)
 }
 
 
 //функции для работы с попап добавления места
-const addPlaceOpenPopup = function() {
+const openAddPlacePopup = function() {
+    addPlaceFormValidator.cleanErrors()
+    addPlaceFormValidator.resetSubmitButton()
+    formAddPlace.reset()
+
     openPopup(popupAddPlace)
 }
 
 function submitNewCard(evt) {
     evt.preventDefault();
-    const newCard = new Card({ name: placeTitleInput.value, link: placeImageInput.value }, '.template_type_default', openPreviewPopup);
-    const newCardElement = newCard.generateCard();
-    document.querySelector('.places').prepend(newCardElement);
+    const newCard = createCard({ name: placeTitleInput.value, link: placeImageInput.value })
+    placeContainer.prepend(newCard);
     placeTitleInput.value = "";
     placeImageInput.value = "";
     closePopup(popupAddPlace)
@@ -127,6 +138,6 @@ editProfileFormValidator.enableValidation()
 
 // слушатели
 editProfileOpenButton.addEventListener("click", openProfilePopup);
-formEditProfile.addEventListener('submit', submitForm);
-addPlaceOpenButton.addEventListener("click", addPlaceOpenPopup);
+formEditProfile.addEventListener('submit', submitEditProfileForm);
+addPlaceOpenButton.addEventListener("click", openAddPlacePopup);
 formAddPlace.addEventListener("submit", submitNewCard)

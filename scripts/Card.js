@@ -25,8 +25,9 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector(".place__title").textContent = this._name;
-        this._element.querySelector(".place__image").src = this._image
-        this._element.querySelector(".place__image").alt = this._alt
+        this._placeImage = this._element.querySelector(".place__image");
+        this._placeImage.src = this._image;
+        this._placeImage.alt = this._alt;
         return this._element;
 
     }
@@ -42,7 +43,7 @@ export default class Card {
         })
 
         this._popupPreviewOpenButton.addEventListener("click", () => {
-            this._openPreviewPopup(this._name, this._image)
+            this._openPreviewPopup(this._name, this._image, this._alt)
         })
     }
 

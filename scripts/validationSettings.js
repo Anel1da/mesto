@@ -3,5 +3,8 @@ export const validationSettings = {
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit-button',
     inputErrorClass: 'popup__input-error',
-    errorClass: 'popup__input-error_active'
+    inputErrorClassActive: 'popup__input-error_active',
+    inputErrorStyleActive: "popup__input_type-error"
+
+
 }
