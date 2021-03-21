@@ -9,15 +9,15 @@ export default class FormValidator {
         this._inputErrorStyleActive = validationSettings.inputErrorStyleActive
     }
     enableValidation() {
-        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
 
         this._inputList.forEach((inputElement) => {
             this._setEventListeners(inputElement)
-            this._toggleButtonState(this._inputList, this._buttonElement)
+
         })
 
     }
+
     cleanErrors() {
 
         this._inputList.forEach((inputElement) => inputElement.classList.remove(this._inputErrorStyleActive))
@@ -34,6 +34,10 @@ export default class FormValidator {
     }
 
     _setEventListeners(inputElement) {
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+        this._buttonElement.addEventListener("submit", (event) => {
+            event.preventDefault()
+        });
         inputElement.addEventListener("input", (event) => {
             this._checkInputValidity(inputElement)
             this._toggleButtonState(this._inputList, this._buttonElement)
