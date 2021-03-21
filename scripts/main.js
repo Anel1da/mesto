@@ -1,7 +1,8 @@
 import { initialCards } from "./initialCards.js";
 import Card from "./Card.js";
-import FormValidator from "./FormValidator.js"
 import { validationSettings } from "./validationSettings.js"
+import FormValidator from "./FormValidator.js"
+
 
 // переменные - открытие и закрытие попап редактирования профиля
 const popupEditProfile = document.querySelector(".popup_edit-profile");
