@@ -1,7 +1,7 @@
 import Popup from "../components/Popup.js"
 export default class PopupWithImage extends Popup {
-    constructor(cardSelector) {
-        super(cardSelector)
+    constructor(popupSelector) {
+        super(popupSelector)
         this._image = this._popupElement.querySelector(".preview__image")
         this._title = this._popupElement.querySelector(".preview__title")
     }
