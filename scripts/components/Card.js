@@ -1,10 +1,10 @@
 export default class Card {
-    constructor(data, cardSelector, openPreviewPopup) {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name
         this._image = data.link
         this._alt = data.alt
         this._cardSelector = cardSelector;
-        this._openPreviewPopup = openPreviewPopup;
+        this._handleCardClick = handleCardClick;
 
     }
 
@@ -18,9 +18,9 @@ export default class Card {
         this._likeButton = cardElement.querySelector(".place__like-icon");
         this._popupPreviewOpenButton = cardElement.querySelector(".place__image");
 
-
         return cardElement
     }
+
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
@@ -43,7 +43,7 @@ export default class Card {
         })
 
         this._popupPreviewOpenButton.addEventListener("click", () => {
-            this._openPreviewPopup(this._name, this._image, this._alt)
+            this._handleCardClick(this._name, this._image, this._alt)
         })
     }
 
