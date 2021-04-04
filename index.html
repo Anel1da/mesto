@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+
+<body class="page">
+    <header class="header">
+        <div class="header__logo"></div>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img class="profile__photo" src="c15cb08ab8ecfaba54c6.jpg" alt="Аватар пользователя">
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
+                <p class="profile__job">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
+        </section>
+        <section class="places">
+            <template class="template template_type_default">
+
+                <figure class="place">
+                    <img class="place__image" src="#" alt="#">
+                    <button class="place__remove-icon" type="button" aria-label="Удалить карточку"></button>
+                    <figcaption class="place__discription">
+                        <h2 class="place__title"></h2>
+                        <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
+                     
+                    </figcaption>
+                </figure>
+            </template>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy;2021 Mesto Russia</p>
+    </footer>
+    <section class="popup popup_edit-profile">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_edit-profile" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="form form_edit-profile " name="edit" novalidate>
+                <label class="popup__label">
+                    <input id="name" class="popup__input  popup__input_type_name" type="text" placeholder="Имя" name="name" value="" minlength="2" maxlength="40" required>
+                <span class="popup__input-error" id="name-error"></span>
+            </label>
+                <label class="popup__label">
+                <input id="job" class="popup__input popup__input_type_job" type="text" placeholder="Вид деятельности"  name="job" value="" minlength="2" maxlength="200" required>
+                <span class="popup__input-error" id="job-error"></span>
+            </label>
+                <button class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
+
+    <section class="popup popup_add-place">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_add-place" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="form form_add-place" name="add-place" novalidate>
+                <label class="popup__label">
+                <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="placeTitle" placeholder="Название" minlength="2" maxlength="30" required>
+                <span class="popup__input-error" id="place-title-error"></span>
+            </label>
+                <label class="popup__label">
+                <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="placeImage" placeholder="Ссылка на картинку" required>
+                <span class="popup__input-error" id="place-image-error"></span>
+            </label>
+                <button class="popup__submit-button popup__submit-button_add-place" type="submit">Создать</button>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="popup popup_preview">
+        <div class="popup__container popup__container_preview">
+            <button class="popup__close-button popup__close-button_preview" type="button" aria-label="Закрыть окно"></button>
+            <figure class="preview">
+                <img class="preview__image" src="#" alt="#">
+                <figcaption>
+                    <h2 class="preview__title"></h2>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+</body>
+
+</html>
