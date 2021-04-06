@@ -16,22 +16,19 @@ export default class FormValidator {
 
     cleanErrors() {
 
-        this._inputList.forEach((inputElement) => inputElement.classList.remove(this._inputErrorStyleActive))
-        this._errorList = Array.from(this._formElement.querySelectorAll(`${this._inputErrorSelector}_active`))
-        this._errorList.forEach((errorElement) => {
-            errorElement.classList.remove(this._inputErrorClassActive)
-            errorElement.textContent = "";
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(inputElement)
         })
     }
 
     resetSubmitButton() {
-        this._formElement.querySelector(this._submitButtonSelector).setAttribute("disabled", true);
+        this._buttonElement.setAttribute("disabled", true);
 
     }
 
     _setEventListeners() {
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-        this._buttonElement.addEventListener("submit", (event) => {
+        this._formElement.addEventListener("submit", (event) => {
             event.preventDefault()
         });
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));

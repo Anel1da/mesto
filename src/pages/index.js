@@ -1,12 +1,12 @@
-import "./pages/index.css";
-import { initialCards } from "./scripts/components/initialCards.js";
-import Card from "./scripts/components/Card.js";
-import { validationSettings } from "./scripts/components/validationSettings.js"
-import FormValidator from "./scripts/components/FormValidator.js"
-import Section from "./scripts/components/Section.js"
-import PopupWithImage from "./scripts/components/PopupWithImage.js"
-import PopupWithForm from "./scripts/components/PopupWithForm.js"
-import UserInfo from "./scripts/components/UserInfo.js"
+import "../pages/index.css";
+import { initialCards } from "../scripts/utilits/initialCards.js";
+import Card from "../scripts/components/Card.js";
+import { validationSettings } from "../scripts/utilits/validationSettings.js"
+import FormValidator from "../scripts/components/FormValidator.js"
+import Section from "../scripts/components/Section.js"
+import PopupWithImage from "../scripts/components/PopupWithImage.js"
+import PopupWithForm from "../scripts/components/PopupWithForm.js"
+import UserInfo from "../scripts/components/UserInfo.js"
 import {
     editProfileOpenButton,
     addPlaceOpenButton,
@@ -16,18 +16,24 @@ import {
     nameInput,
     jobInput,
 
-} from "./scripts/utilits/constants.js"
+} from "../scripts/utilits/constants.js"
 
 //работа с карточками (отрисовка изначальных карточек, превью)
+
+function createCard(item, cardSelector) {
+    const card = new Card(item, cardSelector, popupWithImage.openPopup.bind(popupWithImage))
+    const cardElement = card.generateCard();
+    return cardElement
+
+}
 
 const popupWithImage = new PopupWithImage(".popup_preview")
 
 const initalCardList = new Section({
     data: initialCards,
     renderer: (item) => {
-        const card = new Card(item, cardSelector, popupWithImage.handleCardClick.bind(popupWithImage))
-        const cardElement = card.generateCard();
-        initalCardList.addItem(cardElement)
+        const newCard = createCard(item, cardSelector)
+        initalCardList.addItem(newCard)
     }
 }, ".places")
 
@@ -39,9 +45,8 @@ initalCardList.renderItems()
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
     handleSubmitForm: (inputValues) => {
-        const newCard = new Card({ name: inputValues.placeTitle, link: inputValues.placeImage }, cardSelector, popupWithImage.handleCardClick.bind(popupWithImage))
-        const cardElement = newCard.generateCard();
-        initalCardList.addItem(cardElement, true)
+        const newCard = createCard({ name: inputValues.placeTitle, link: inputValues.placeImage }, cardSelector, popupWithImage.openPopup.bind(popupWithImage))
+        initalCardList.addItem(newCard, true)
         popupWithCard.closePopup()
     }
 
@@ -50,7 +55,6 @@ const popupWithCard = new PopupWithForm({
 const openAddPlacePopup = function() {
     addPlaceFormValidator.cleanErrors()
     addPlaceFormValidator.resetSubmitButton()
-    formAddPlace.reset()
     popupWithCard.openPopup()
 }
 
