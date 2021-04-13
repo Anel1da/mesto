@@ -1,5 +1,5 @@
 import "../pages/index.css";
-import { initialCards } from "../scripts/utilits/initialCards.js";
+import { initialCards } from "../scripts/utilits/initalCards.js";
 import Card from "../scripts/components/Card.js";
 import { validationSettings } from "../scripts/utilits/validationSettings.js"
 import FormValidator from "../scripts/components/FormValidator.js"
@@ -18,6 +18,16 @@ import {
 
 } from "../scripts/utilits/constants.js"
 
+import Api from "../scripts/components/Api.js"
+
+
+const api = new Api({
+    adress: "https://mesto.nomoreparties.co/v1/",
+    token: "4342b75a-e8c5-4095-978c-b573b1ddd509",
+    groupId: "cohort-22"
+})
+
+
 //работа с карточками (отрисовка изначальных карточек, превью)
 
 function createCard(item, cardSelector) {
@@ -30,14 +40,24 @@ function createCard(item, cardSelector) {
 const popupWithImage = new PopupWithImage(".popup_preview")
 
 const initalCardList = new Section({
-    data: initialCards,
+
     renderer: (item) => {
         const newCard = createCard(item, cardSelector)
         initalCardList.addItem(newCard)
-    }
-}, ".places")
 
-initalCardList.renderItems()
+    },
+    containerSelector: ".places"
+})
+
+
+api.getCards()
+    .then(cards => {
+        initalCardList.renderItems(cards)
+
+    })
+    .catch(error => console.log("Ошибка загрузки карточек"))
+
+
 
 
 //работа с формой добавления карточки 
@@ -45,8 +65,12 @@ initalCardList.renderItems()
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
     handleSubmitForm: (inputValues) => {
-        const newCard = createCard({ name: inputValues.placeTitle, link: inputValues.placeImage }, cardSelector, popupWithImage.openPopup.bind(popupWithImage))
-        initalCardList.addItem(newCard, true)
+        api.addCard({ name: inputValues.placeTitle, link: inputValues.placeImage })
+            .then((cardData) => {
+                const newCard = createCard(cardData, cardSelector)
+                initalCardList.addItem(newCard)
+            })
+
         popupWithCard.closePopup()
     }
 
@@ -59,11 +83,24 @@ const openAddPlacePopup = function() {
 }
 
 
-// работа с формой добавления информации пользователя
+// работа информацией пользователя
+
+
+api.getUsersInfo()
+    .then((usersData) => {
+        userInfo.setUserInfo(usersData)
+    })
+    .catch(error => console.log("Ошибка загрузки информации профиля"))
+
+
+
+
+
 
 const userInfo = new UserInfo({
     userNameSelector: ".profile__name",
-    userJobSelector: ".profile__job"
+    userJobSelector: ".profile__job",
+    userAvatarSelector: ".profile__photo"
 })
 
 const openProfilePopup = function() {
@@ -71,7 +108,6 @@ const openProfilePopup = function() {
     popupWithProfile.openPopup()
     setProfileInputs()
 }
-
 const setProfileInputs = () => {
     nameInput.value = userInfo.getUserInfo().userName
     jobInput.value = userInfo.getUserInfo().userJob
@@ -79,11 +115,15 @@ const setProfileInputs = () => {
 
 const popupWithProfile = new PopupWithForm({
     popupSelector: ".popup_edit-profile",
-    handleSubmitForm: (inputValues) => {
-        userInfo.setUserInfo({
-            name: inputValues.name,
-            job: inputValues.job
-        });
+    handleSubmitForm: () => {
+        api.editUsersProfile({
+                name: nameInput.value,
+                about: jobInput.value
+            })
+            .then((usersData) => {
+                userInfo.setUserInfo(usersData)
+            })
+            .catch(error => console.log("Ошибка редактирования информации профиля"))
         popupWithProfile.closePopup()
     }
 })
