@@ -56,15 +56,15 @@ export default class Api {
 
     }
 
-    // добавление новой карточки6е
-    addCard({ name, link }) {
+    // добавление новой карточки
+    addCard(data) {
         return fetch(`${this._adress}${this._groupId}/cards`, {
                 method: "POST",
                 headers: {
                     authorization: this._token,
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify({ name, link })
+                body: JSON.stringify({ name: data.name, link: data.link })
             })
             .then(response => {
                 if (response.ok) {

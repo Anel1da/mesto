@@ -5,6 +5,7 @@ export default class Card {
         this._alt = data.alt
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._id = data._id
 
     }
 
@@ -30,6 +31,10 @@ export default class Card {
         this._placeImage.alt = this._alt;
         return this._element;
 
+    }
+
+    countLikes(counter) {
+        this._element.querySelector('place__like-counter').textContent = counter;
     }
 
 

@@ -1,0 +1,315 @@
+[33mcommit 8be59886dd5fd147e66e15fc06dff3748b57b7db[m[33m ([m[1;36mHEAD -> [m[1;32mserv[m[33m)[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Tue Apr 13 23:54:01 2021 +0300
+
+    workingwith server - rendering initial cards, adding new cards, edition of user info
+
+[33mcommit 1302645232208243c412d77f5082f0f72ae5747e[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Tue Apr 6 21:12:54 2021 +0300
+
+    review1
+
+[33mcommit eccf249730448df2f1d8a94d724ccab4fc3afef0[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 20:09:03 2021 +0300
+
+    gh-pages
+
+[33mcommit c81b739ef273acff22be585cf9c357690f343993[m[33m ([m[1;31morigin/develop/js[m[33m, [m[1;32mdevelop/js[m[33m)[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 17:10:09 2021 +0300
+
+    gitinnore4
+
+[33mcommit 9a2c15821b502a122133f5d21dc24d8fee279989[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 17:05:20 2021 +0300
+
+    gitinnore3
+
+[33mcommit 6a367519db389279c48de93d430b2f70cede7e13[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 16:31:26 2021 +0300
+
+    gitinnore2
+
+[33mcommit 31cabce2e326dac38d6f8ae8b8157ce39f6a5f50[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 16:23:15 2021 +0300
+
+    gitinnore
+
+[33mcommit 40fdef3a28404aefb6b6204db3063d58977bd0a6[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Apr 4 16:16:58 2021 +0300
+
+    webpack
+
+[33mcommit 3b899d9c784f5d2689c1f1a1dd8f70e015ee5acc[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Apr 3 18:35:37 2021 +0300
+
+    developed all classes
+
+[33mcommit 20d3f7efe3b9ca60c76e2f1d29a69807af5f59b1[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Apr 3 16:14:46 2021 +0300
+
+    developed: class popupWithForm
+
+[33mcommit 340037da93cd8a1ee092faebe1da2600a936537e[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Apr 3 11:33:53 2021 +0300
+
+    developed: classes Section, Popup, PopupWithImage
+
+[33mcommit 11d7ca4f24ff1c0044ae7151a9b76e538200bb5c[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Mar 21 14:53:29 2021 +0300
+
+    revision after review3
+
+[33mcommit 0726c90f25c99c1e2aad6f9390e7b7cf83c686c1[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sun Mar 21 11:34:20 2021 +0300
+
+    revision after review2
+
+[33mcommit 9043b54cc68e6a541f9808eb3c696650e9e2c6cc[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Mar 20 20:40:00 2021 +0300
+
+    revision after review
+
+[33mcommit 1a687b7e6b234777f04596ef77f4fb328f726ff0[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Mar 20 13:57:44 2021 +0300
+
+    developed class Formvalidator
+
+[33mcommit 7bf50b142ab9ec63687040c6f4a39b7990b7f767[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Thu Mar 18 22:56:11 2021 +0300
+
+    refactoring of Card.js
+
+[33mcommit 54349b45d03e4794c2c682d7c5706703c9c9cdae[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Wed Mar 17 00:26:34 2021 +0300
+
+    code refactoring: add Class Card
+
+[33mcommit bdd6ff8fba2245fbd55f4c9b733611b92cf00fa7[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Fri Feb 26 23:13:40 2021 +0300
+
+    autotesting
+
+[33mcommit 936b077d02526e20e447ba1d7016708396a9b934[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Fri Feb 26 23:11:05 2021 +0300
+
+    autotesting'
+    '
+
+[33mcommit 4e98a10e8f5ee5b11b13339feb1968a4daef3a52[m
+Merge: 202da40 ceb92d5
+Author: Lidya <anel1da@yandex.ru>
+Date:   Fri Feb 26 23:05:45 2021 +0300
+
+    developed: 1) enableValidation(object.selectors)
+
+[33mcommit ceb92d505a7650060c86ba9f8ff039184a63df87[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Fri Feb 26 22:54:11 2021 +0300
+
+    developed: 1) enableValidation(object.selectors)
+
+[33mcommit 1e82a9ee8d83e2d38fe30b296737bb873d92ec69[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Wed Feb 24 22:23:21 2021 +0300
+
+    developed: 1) form validation 2) close popUp with overlay 3) close popUp with Esc
+
+[33mcommit 202da4055938001dda4d8543f80655ac74a47429[m[33m ([m[1;32mcheckout[m[33m)[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 13 23:52:10 2021 +0300
+
+    review 3
+
+[33mcommit 93b79ef1ca494e90ab7a57634e134471951f935d[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 13 12:29:44 2021 +0300
+
+    review 2
+
+[33mcommit 3df89994c355f04c0764d8c8ddd497d48988dc58[m
+Merge: cb2ad98 53b8da8
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 13 11:12:56 2021 +0300
+
+    review 1
+
+[33mcommit cb2ad9897c9e03ef8e469fb75be79658091d955d[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 13 10:41:06 2021 +0300
+
+    review 1
+
+[33mcommit 53b8da8fefa2f1d6feeee83cb01913f82ef69dfe[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 10:10:05 2021 +0300
+
+    Update README.md
+
+[33mcommit 7cfa91ab0834ba6e3462956054e6ff568f871987[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 10:03:43 2021 +0300
+
+    Update main.js
+
+[33mcommit 2b5b8d9b45256d6ef2b8184514c77def922725c9[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 09:39:28 2021 +0300
+
+    Update README.md
+
+[33mcommit 026ef4b7f975c1f60c5f9a19c7ffbd14135d5911[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 09:39:14 2021 +0300
+
+    Update README.md
+
+[33mcommit 0ac23124caedd118914628d4c09e904b7247d71c[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 09:36:52 2021 +0300
+
+    Update index.html
+
+[33mcommit 095602a38fae7e02d37ffa3746624f671ceea792[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Feb 12 09:35:43 2021 +0300
+
+    Update place__remove-icon.css
+
+[33mcommit 5d64229e06d77cb2148b2b0aafac4da80a7e736a[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Thu Feb 11 23:04:50 2021 +0300
+
+    feat: preview
+
+[33mcommit 5cb47b4b2cd11f65a9d1da7055a3b35fd63aa890[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Wed Feb 10 21:32:03 2021 +0300
+
+    feat: add  like-btn
+
+[33mcommit 1d4c82490142ecc9c35d56c17c3aca4582dcafeb[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Wed Feb 10 20:43:31 2021 +0300
+
+    feat: add place/remove btn
+
+[33mcommit 4372112c0fbd795c33b024bda1c1be71c4431d69[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 6 15:54:27 2021 +0300
+
+    popup developing
+
+[33mcommit f2a402dbbcef23e87c4c949f8636ba37a35f4d4d[m
+Author: Lidya <anel1da@yandex.ru>
+Date:   Sat Feb 6 13:56:15 2021 +0300
+
+    template element developing
+
+[33mcommit 67a7936d58140b46c2fb167cfb6a5b93d2fc4c99[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sun Jan 31 19:42:19 2021 +0300
+
+    review 2
+
+[33mcommit c06f95c5a4f16c0acdf4b5fc8f755c1e7eab5776[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sun Jan 31 17:43:36 2021 +0300
+
+    review 2
+
+[33mcommit 0a3865b092ef202cc6a482b22e1df3a0bb49b0c7[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sun Jan 31 16:19:32 2021 +0300
+
+    review 2
+
+[33mcommit 466fae5fb04b6b5c2deb7add23268c7a80603ea3[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sat Jan 30 23:52:43 2021 +0300
+
+    autotest cheking
+
+[33mcommit b79264287a9af3f0a0aa3aefc225f3b6a39329a8[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sat Jan 30 23:48:22 2021 +0300
+
+    autotest cheking
+
+[33mcommit a755e9d38a1a8d9096522205e15fbec4cceaf424[m
+Merge: 9eaa74d 46e372c
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sat Jan 30 23:41:22 2021 +0300
+
+    autotest cheking
+
+[33mcommit 9eaa74ddf613be873f6e735e196f59470344635d[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Sat Jan 30 23:05:48 2021 +0300
+
+    1st revue revision
+
+[33mcommit 46e372c584652b88d2ad5659f2a777b7cf5bdab0[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Jan 29 10:47:58 2021 +0300
+
+    Update index.html
+
+[33mcommit 6338e34fc518d4f61a36de3fbab8fed70e640c9e[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Fri Jan 29 10:45:17 2021 +0300
+
+    Update popup__container.css
+
+[33mcommit 60c291aa52f24c5a0054e60c5a7dca7cd6f41639[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Fri Jan 29 00:07:46 2021 +0300
+
+    Readme file checked
+
+[33mcommit 0b9f0f8fd31bfe87f73dbc36be128ccaa969b731[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Thu Jan 28 23:47:01 2021 +0300
+
+    Readme file checked
+
+[33mcommit 382ef47a67b1320ad356375b4816ed3208430f59[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Thu Jan 28 23:29:16 2021 +0300
+
+    js popup added
+
+[33mcommit 379a46c929fc5e6d24fd4c7964edb44f3b0efae3[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Wed Jan 27 23:05:02 2021 +0300
+
+    form input added
+
+[33mcommit 644231ea2a1b5b2e679f72f9886afcf1a7e0e044[m
+Author: Zhogina Lidya <anel1da@yandex.ru>
+Date:   Mon Jan 25 23:30:24 2021 +0300
+
+    Popup close/open button added
+
+[33mcommit 76c454e45c74652725d162040a3fabc9b9b0029a[m
+Author: Anel1da <75184011+Anel1da@users.noreply.github.com>
+Date:   Mon Jan 25 21:06:11 2021 +0300
+
+    Project Mesto

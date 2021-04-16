@@ -30,8 +30,11 @@
                     <button class="place__remove-icon" type="button" aria-label="Удалить карточку"></button>
                     <figcaption class="place__discription">
                         <h2 class="place__title"></h2>
+                        <div class="place__like-container"> 
+
                         <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                     
+                     <div class="place__like-counter">0</div>
+                    </div>
                     </figcaption>
                 </figure>
             </template>
@@ -65,11 +68,11 @@
             <h2 class="popup__title">Новое место</h2>
             <form class="form form_add-place" name="add-place" novalidate>
                 <label class="popup__label">
-                <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="placeTitle" placeholder="Название" minlength="2" maxlength="30" required>
+                <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="name" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__input-error" id="place-title-error"></span>
             </label>
                 <label class="popup__label">
-                <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="placeImage" placeholder="Ссылка на картинку" required>
+                <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="link" placeholder="Ссылка на картинку" required>
                 <span class="popup__input-error" id="place-image-error"></span>
             </label>
                 <button class="popup__submit-button popup__submit-button_add-place" type="submit">Создать</button>

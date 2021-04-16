@@ -30,14 +30,16 @@ const api = new Api({
 
 //работа с карточками (отрисовка изначальных карточек, превью)
 
-function createCard(item, cardSelector) {
+const popupWithImage = new PopupWithImage(".popup_preview")
+
+
+function createCard(item) {
     const card = new Card(item, cardSelector, popupWithImage.openPopup.bind(popupWithImage))
     const cardElement = card.generateCard();
     return cardElement
 
 }
 
-const popupWithImage = new PopupWithImage(".popup_preview")
 
 const initalCardList = new Section({
 
@@ -64,10 +66,12 @@ api.getCards()
 
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
-    handleSubmitForm: (inputValues) => {
-        api.addCard({ name: inputValues.placeTitle, link: inputValues.placeImage })
-            .then((cardData) => {
-                const newCard = createCard(cardData, cardSelector)
+    handleSubmitForm: (data) => {
+        api.addCard(data)
+            .then(result => {
+
+                const newCard = createCard({...data, _id: result._id })
+
                 initalCardList.addItem(newCard)
             })
 
@@ -85,6 +89,11 @@ const openAddPlacePopup = function() {
 
 // работа информацией пользователя
 
+const userInfo = new UserInfo({
+    userNameSelector: ".profile__name",
+    userJobSelector: ".profile__job",
+    userAvatarSelector: ".profile__photo"
+})
 
 api.getUsersInfo()
     .then((usersData) => {
@@ -93,15 +102,6 @@ api.getUsersInfo()
     .catch(error => console.log("Ошибка загрузки информации профиля"))
 
 
-
-
-
-
-const userInfo = new UserInfo({
-    userNameSelector: ".profile__name",
-    userJobSelector: ".profile__job",
-    userAvatarSelector: ".profile__photo"
-})
 
 const openProfilePopup = function() {
     editProfileFormValidator.cleanErrors()
