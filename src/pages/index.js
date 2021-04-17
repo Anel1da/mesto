@@ -34,7 +34,22 @@ const popupWithImage = new PopupWithImage(".popup_preview")
 
 
 function createCard(item) {
-    const card = new Card(item, cardSelector, popupWithImage.openPopup.bind(popupWithImage))
+    const card = new Card(item, cardSelector, {
+        handleOpenPreview: popupWithImage.openPopup.bind(popupWithImage),
+        handleSetLike: () => {
+            api.setLike(card.getCardId())
+                .then(result => card.countLikes(result.likes.length))
+                .catch(error => console.log(error))
+
+        },
+        handleRemoveLike: () => {
+            api.removeLike(card.getCardId())
+                .then(result => card.countLikes(result.likes.length))
+                .catch(error => console.log(error))
+
+        }
+
+    })
     const cardElement = card.generateCard();
     return cardElement
 
@@ -52,12 +67,13 @@ const initalCardList = new Section({
 })
 
 
-api.getCards()
+/* 
+  api.getCards()
     .then(cards => {
         initalCardList.renderItems(cards)
 
     })
-    .catch(error => console.log("Ошибка загрузки карточек"))
+    .catch(error => console.log("Ошибка загрузки карточек")) */
 
 
 
@@ -70,7 +86,7 @@ const popupWithCard = new PopupWithForm({
         api.addCard(data)
             .then(result => {
 
-                const newCard = createCard({...data, _id: result._id })
+                const newCard = createCard({...data, _id: result._id, likes: result.likes })
 
                 initalCardList.addItem(newCard)
             })
@@ -95,11 +111,11 @@ const userInfo = new UserInfo({
     userAvatarSelector: ".profile__photo"
 })
 
-api.getUsersInfo()
+/* api.getUsersInfo()
     .then((usersData) => {
         userInfo.setUserInfo(usersData)
     })
-    .catch(error => console.log("Ошибка загрузки информации профиля"))
+    .catch(error => console.log("Ошибка загрузки информации профиля")) */
 
 
 
@@ -113,6 +129,8 @@ const setProfileInputs = () => {
     jobInput.value = userInfo.getUserInfo().userJob
 }
 
+
+
 const popupWithProfile = new PopupWithForm({
     popupSelector: ".popup_edit-profile",
     handleSubmitForm: () => {
@@ -120,13 +138,28 @@ const popupWithProfile = new PopupWithForm({
                 name: nameInput.value,
                 about: jobInput.value
             })
-            .then((usersData) => {
-                userInfo.setUserInfo(usersData)
+            .then((userData) => {
+                userInfo.setUserInfo(userData)
             })
             .catch(error => console.log("Ошибка редактирования информации профиля"))
         popupWithProfile.closePopup()
     }
 })
+
+
+Promise.all(
+        [api.getUsersInfo(),
+            api.getCards()
+        ]
+    ).then(result => {
+        const [userData, initialCards] = result;
+        userInfo.setUserInfo(userData);
+        initalCardList.renderItems(initialCards);
+        const user = userData
+
+    })
+    .catch(error => console.log(error))
+
 
 
 popupWithProfile.setEventListeners()

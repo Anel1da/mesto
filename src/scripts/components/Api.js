@@ -58,13 +58,29 @@ export default class Api {
 
     // добавление новой карточки
     addCard(data) {
-        return fetch(`${this._adress}${this._groupId}/cards`, {
-                method: "POST",
+            return fetch(`${this._adress}${this._groupId}/cards`, {
+                    method: "POST",
+                    headers: {
+                        authorization: this._token,
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: data.name, link: data.link })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    return Promise.reject(`Ошибка ${response.status}`)
+                })
+
+        }
+        // добавление лайка карточке
+    setLike(cardId) {
+        return fetch(`${this._adress}${this._groupId}/cards/likes/${cardId}`, {
+                method: "PUT",
                 headers: {
                     authorization: this._token,
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({ name: data.name, link: data.link })
+                }
             })
             .then(response => {
                 if (response.ok) {
@@ -72,9 +88,25 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка ${response.status}`)
             })
-
-
     }
+
+
+    // удаление лайка карточки
+    removeLike(cardId) {
+        return fetch(`${this._adress}${this._groupId}/cards/likes/${cardId}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: this._token,
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                return Promise.reject(`Ошибка ${response.status}`)
+            })
+    }
+
 
 
 

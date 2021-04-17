@@ -1,11 +1,16 @@
 export default class Card {
-    constructor(data, cardSelector, handleCardClick) {
+    constructor(data, cardSelector, { handleOpenPreview, handleSetLike, handleRemoveLike, handleDeleteCard }) {
         this._name = data.name
         this._image = data.link
         this._alt = data.alt
         this._cardSelector = cardSelector;
-        this._handleCardClick = handleCardClick;
-        this._id = data._id
+        this._id = data._id;
+        this._likes = data.likes
+            /*      this._ownerId = data.owner._id; */
+        this._handleOpenPreview = handleOpenPreview;
+        this._handleSetLike = handleSetLike;
+        this._handleRemoveLike = handleRemoveLike;
+        this._handleDeleteCard = handleDeleteCard
 
     }
 
@@ -29,12 +34,20 @@ export default class Card {
         this._placeImage = this._element.querySelector(".place__image");
         this._placeImage.src = this._image;
         this._placeImage.alt = this._alt;
+        this._element.querySelector('.place__like-counter').textContent = this._likes.length;
+
+
         return this._element;
 
     }
 
+    getCardId() {
+        return this._id;
+    }
+
+
     countLikes(counter) {
-        this._element.querySelector('place__like-counter').textContent = counter;
+        this._element.querySelector('.place__like-counter').textContent = counter;
     }
 
 
@@ -43,12 +56,10 @@ export default class Card {
             this._removeCard()
         })
 
-        this._likeButton.addEventListener("click", () => {
-            this._likeCard()
-        })
+        this._likeButton.addEventListener("click", this._likeCard.bind(this))
 
         this._popupPreviewOpenButton.addEventListener("click", () => {
-            this._handleCardClick(this._name, this._image, this._alt)
+            this._handleOpenPreview(this._name, this._image, this._alt)
         })
     }
 
@@ -58,8 +69,20 @@ export default class Card {
         this._element = null;
     }
 
-    _likeCard() {
-        this._likeButton.classList.toggle("place__like-icon_liked");
+    _likeCard(evt) {
+        if (evt.target.classList.contains('place__like-icon_liked')) {
+            this._likeButton.classList.remove("place__like-icon_liked")
+            this._handleRemoveLike()
+        } else {
+            this._likeButton.classList.add("place__like-icon_liked")
+            this._handleSetLike()
+        }
+
+
+
+        /*    this._likeButton.classList.add("place__like-icon_liked"); */
+
+
     }
 
 }
