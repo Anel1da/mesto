@@ -14,7 +14,10 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__photo" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+            <div class="profile__avatar">
+                <img class="profile__photo" src="<%=require('./images/avatar.jpg')%>" alt="Аватар пользователя">
+                <button class="profile__updateAvatar-button"></button>
+            </div>
             <div class="profile__info">
                 <h1 class="profile__name"></h1>
                 <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
@@ -92,6 +95,29 @@
             </figure>
         </div>
     </section>
+    <section class="popup popup_confim_delete">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_confim_delete" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="form form_confim_delete" name="confim_delete" novalidate>
+                <button class="popup__submit-button popup__submit-button_delete" type="submit">Да</button>
+            </form>
+        </div>
+    </section>
+    <section class="popup popup_update-avatar">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_update-avatar" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="form form_update-avatar" name="update-avatar" novalidate>
+                <label class="popup__label">
+                    <input id="avatar" class="popup__input popup__input_type_avatar" type="url" name="link" placeholder="Ссылка на фото" required>
+                    <span class="popup__input-error" id="place-image-error"></span>
+                </label>
+                <button class="popup__submit-button popup__submit-button_update-avatar" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
 </body>
 
 </html>

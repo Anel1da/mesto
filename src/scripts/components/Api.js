@@ -107,8 +107,23 @@ export default class Api {
             })
     }
 
+    // удаление карточки
+    deleteCard(cardId) {
+        return fetch(`${this._adress}${this._groupId}/cards/${cardId}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: this._token,
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                return Promise.reject(`Ошибка ${response.status}`)
+            })
 
 
+    }
 
 
 }

@@ -1,12 +1,13 @@
 export default class Card {
-    constructor(data, cardSelector, { handleOpenPreview, handleSetLike, handleRemoveLike, handleDeleteCard }) {
+    constructor(data, user, cardSelector, { handleOpenPreview, handleSetLike, handleRemoveLike, handleDeleteCard }) {
         this._name = data.name
         this._image = data.link
         this._alt = data.alt
         this._cardSelector = cardSelector;
         this._id = data._id;
         this._likes = data.likes
-            /*      this._ownerId = data.owner._id; */
+        this._ownerId = data.owner._id;
+        this._user = user;
         this._handleOpenPreview = handleOpenPreview;
         this._handleSetLike = handleSetLike;
         this._handleRemoveLike = handleRemoveLike;
@@ -35,11 +36,20 @@ export default class Card {
         this._placeImage.src = this._image;
         this._placeImage.alt = this._alt;
         this._element.querySelector('.place__like-counter').textContent = this._likes.length;
-
+        this._showTrashCan()
+        this._likes.forEach(item => {
+            if (item._id === this._user._id) {
+                this._element.querySelector('.place__like-icon').classList.add('place__like-icon_liked');
+            }
+        })
 
         return this._element;
 
     }
+
+
+
+
 
     getCardId() {
         return this._id;
@@ -52,9 +62,7 @@ export default class Card {
 
 
     _setEventListeners() {
-        this._removeButton.addEventListener("click", () => {
-            this._removeCard()
-        })
+        this._removeButton.addEventListener("click", this._handleDeleteCard)
 
         this._likeButton.addEventListener("click", this._likeCard.bind(this))
 
@@ -64,7 +72,7 @@ export default class Card {
     }
 
 
-    _removeCard() {
+    removeCard() {
         this._element.remove()
         this._element = null;
     }
@@ -78,11 +86,14 @@ export default class Card {
             this._handleSetLike()
         }
 
-
-
-        /*    this._likeButton.classList.add("place__like-icon_liked"); */
-
-
     }
+
+    _showTrashCan() {
+        if (this._ownerId === this._user._id) {
+            this._removeButton.classList.add('place__remove-icon_active');
+        }
+    }
+
+
 
 }

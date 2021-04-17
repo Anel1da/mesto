@@ -7,3 +7,5 @@ export const cardSelector = '.template_type_default';
 export const formEditProfile = document.querySelector(".form_edit-profile");
 export const nameInput = formEditProfile.querySelector(".popup__input_type_name");
 export const jobInput = formEditProfile.querySelector(".popup__input_type_job");
+export const popupUpdateAvatarOpenButton = document.querySelector(".profile__updateAvatar-button");
+export const formUpdateAvatar = document.querySelector(".form_update-avatar")
