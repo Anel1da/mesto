@@ -89,6 +89,7 @@ const initalCardList = new Section({
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
     handleSubmitForm: (data) => {
+        renderLoading('.popup_add-place', true);
         api.addCard(data)
             .then(result => {
                 const newCard = createCard(result, result.owner)
@@ -171,7 +172,19 @@ const popupUpdateAvatar = new PopupWithForm({
 })
 
 
-
+// функция отображения процесса обработки запроса
+const renderLoading = function(isLoading, popupSelector) {
+    const popupSubmitButton = document.querySelector(popupSelector).querySelector('.popup__submit-button');
+    if (isLoading) {
+        popupSubmitButton.textContent = 'Сохранение...'
+    } else {
+        if (popupSelector === '.popup_add-place') {
+            popupSubmitButton.textContent = 'Создать'
+        } else {
+            popupSubmitButton.textContent = 'Сохранить'
+        }
+    }
+}
 
 
 Promise.all(
