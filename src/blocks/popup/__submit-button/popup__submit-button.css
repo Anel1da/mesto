@@ -10,6 +10,7 @@
                 line-height: 22px;
                 cursor: pointer;
                 transition: opacity .5s ease;
+                margin-top: 18px;
             }
             
             .popup__submit-button:hover {
@@ -21,6 +22,7 @@
                 .popup__submit-button {
                     font-size: 14px;
                     line-height: 17px;
+                    margin-top: 15px;
                 }
             }
             
