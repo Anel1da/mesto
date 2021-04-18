@@ -127,6 +127,7 @@ const popupConfirmDelete = new PopupWithForm({
 
 
 
+
 // работа информацией пользователя
 
 const userInfo = new UserInfo({
@@ -166,15 +167,26 @@ const popupWithProfile = new PopupWithForm({
     }
 })
 
+//работа с обновлением аватара
 
 const popupUpdateAvatar = new PopupWithForm({
     popupSelector: ".popup_update-avatar",
     handleSubmitForm: () => {
-        console.log('help')
+        renderLoading(true, '.popup_update-avatar');
+        api.updateAvatar(popupUpdateAvatar._getInputValues())
+            .then((res) => userInfo.setUserInfo(res))
+            .catch(error => console.log(error))
+            .finally(renderLoading(false, '.popup_update-avatar'))
         popupUpdateAvatar.closePopup()
     }
+
 })
 
+const openUpdateAvatarPopup = function() {
+    updateAvatarFormValidator.cleanErrors()
+    updateAvatarFormValidator.resetSubmitButton()
+    popupUpdateAvatar.openPopup()
+}
 
 // функция отображения процесса обработки запроса
 const renderLoading = function(isLoading, popupSelector) {
@@ -210,6 +222,7 @@ Promise.all(
 popupWithProfile.setEventListeners()
 popupWithCard.setEventListeners()
 popupWithImage.setEventListeners()
+popupUpdateAvatar.setEventListeners()
 
 
 //работа с валидацией форм добавления места и редактирования профайла
@@ -218,11 +231,11 @@ const addPlaceFormValidator = new FormValidator(validationSettings, formAddPlace
 addPlaceFormValidator.enableValidation()
 const editProfileFormValidator = new FormValidator(validationSettings, formEditProfile)
 editProfileFormValidator.enableValidation()
-    /* const updateAvatarFormValidator = new FormValidator(validationSettings, formUpdateAvatar)
-    updateAvatarFormValidator.enableValidation()
-     */
-    // слушатели
+const updateAvatarFormValidator = new FormValidator(validationSettings, formUpdateAvatar)
+updateAvatarFormValidator.enableValidation()
+
+// слушатели
 
 editProfileOpenButton.addEventListener("click", openProfilePopup);
 addPlaceOpenButton.addEventListener("click", openAddPlacePopup);
-popupUpdateAvatarOpenButton.addEventListener("click", popupUpdateAvatar.openPopup.bind(popupUpdateAvatar));
+popupUpdateAvatarOpenButton.addEventListener("click", openUpdateAvatarPopup);

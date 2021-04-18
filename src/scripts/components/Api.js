@@ -109,11 +109,31 @@ export default class Api {
 
     // удаление карточки
     deleteCard(cardId) {
-        return fetch(`${this._adress}${this._groupId}/cards/${cardId}`, {
-                method: "DELETE",
+            return fetch(`${this._adress}${this._groupId}/cards/${cardId}`, {
+                    method: "DELETE",
+                    headers: {
+                        authorization: this._token,
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    }
+                    return Promise.reject(`Ошибка ${response.status}`)
+                })
+
+
+        }
+        // обновление аватара
+    updateAvatar(url) {
+        return fetch(`${this._adress}${this._groupId}/users/me/avatar`, {
+                method: 'PATCH',
                 headers: {
                     authorization: this._token,
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ avatar: url.link })
+
             })
             .then(response => {
                 if (response.ok) {
@@ -121,6 +141,8 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка ${response.status}`)
             })
+
+
 
 
     }
