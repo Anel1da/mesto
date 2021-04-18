@@ -5,6 +5,10 @@ export default class Api {
         this._groupId = groupId
     }
 
+    getResponse(response) {
+        return response.ok ? response.json() : Promise.reject(`Что-то пошло не так: ${response.status}`)
+    }
+
     // загрузка информации о пользователе с сервера
     getUsersInfo() {
             return fetch(`${this._adress}${this._groupId}/users/me `, {
@@ -12,13 +16,7 @@ export default class Api {
                         authorization: this._token
                     }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    }
-                    return Promise.reject(`Ошибка ${response.status}`)
-                })
-
+                .then(this.getResponse)
         }
         // загрузка карточек с сервера
     getCards() {
@@ -27,13 +25,7 @@ export default class Api {
                     authorization: this._token
                 }
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                return Promise.reject(`Ошибка ${response.status}`)
-            })
-
+            .then(this.getResponse)
     }
 
     // редактирование профиля
@@ -47,12 +39,7 @@ export default class Api {
                 body: JSON.stringify({ name, about })
 
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                return Promise.reject(`Ошибка ${response.status}`)
-            })
+            .then(this.getResponse)
 
     }
 
@@ -66,13 +53,7 @@ export default class Api {
                     },
                     body: JSON.stringify({ name: data.name, link: data.link })
                 })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    }
-                    return Promise.reject(`Ошибка ${response.status}`)
-                })
-
+                .then(this.getResponse)
         }
         // добавление лайка карточке
     setLike(cardId) {
@@ -82,12 +63,7 @@ export default class Api {
                     authorization: this._token,
                 }
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                return Promise.reject(`Ошибка ${response.status}`)
-            })
+            .then(this.getResponse)
     }
 
 
@@ -99,12 +75,7 @@ export default class Api {
                     authorization: this._token,
                 }
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                return Promise.reject(`Ошибка ${response.status}`)
-            })
+            .then(this.getResponse)
     }
 
     // удаление карточки
@@ -115,12 +86,7 @@ export default class Api {
                         authorization: this._token,
                     }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json()
-                    }
-                    return Promise.reject(`Ошибка ${response.status}`)
-                })
+                .then(this.getResponse)
 
 
         }
@@ -135,17 +101,8 @@ export default class Api {
                 body: JSON.stringify({ avatar: url.link })
 
             })
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
-                }
-                return Promise.reject(`Ошибка ${response.status}`)
-            })
-
-
-
+            .then(this.getResponse)
 
     }
-
 
 }
