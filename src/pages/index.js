@@ -89,13 +89,14 @@ const initalCardList = new Section({
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
     handleSubmitForm: (data) => {
-        renderLoading('.popup_add-place', true);
+        renderLoading(true, '.popup_add-place');
         api.addCard(data)
             .then(result => {
                 const newCard = createCard(result, result.owner)
                 initalCardList.addItem(newCard)
             })
             .catch(error => console.log(error))
+            .finally(renderLoading(false, '.popup_add-place'))
 
         popupWithCard.closePopup()
     }
@@ -150,6 +151,7 @@ const setProfileInputs = () => {
 const popupWithProfile = new PopupWithForm({
     popupSelector: ".popup_edit-profile",
     handleSubmitForm: () => {
+        renderLoading(true, '.popup_edit-profile');
         api.editUsersProfile({
                 name: nameInput.value,
                 about: jobInput.value
@@ -158,7 +160,9 @@ const popupWithProfile = new PopupWithForm({
                 userInfo.setUserInfo(userData)
             })
             .catch(error => console.log(error))
+            .finally(renderLoading(false, '.popup_edit-profile'))
         popupWithProfile.closePopup()
+
     }
 })
 
