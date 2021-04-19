@@ -57,8 +57,6 @@ function createCard(item, user) {
         },
         handleDeleteCard: () => {
             popupConfirmDelete.openPopup()
-
-            popupConfirmDelete.setEventListeners()
             cardToRemove = card
 
         }
@@ -89,14 +87,15 @@ const initalCardList = new Section({
 const popupWithCard = new PopupWithForm({
     popupSelector: ".popup_add-place",
     handleSubmitForm: (data) => {
-        renderLoading(true, '.popup_add-place');
+        popupWithCard.renderLoading(true, 'Сохранение...', "");
         api.addCard(data)
             .then(result => {
                 const newCard = createCard(result, result.owner)
                 initalCardList.addItem(newCard)
+                popupWithCard.closePopup()
             })
             .catch(error => console.log(error))
-            .finally(renderLoading(false, '.popup_add-place'))
+            .finally(popupWithCard.renderLoading(false, 'Создать'))
 
         popupWithCard.closePopup()
     }
@@ -152,17 +151,18 @@ const setProfileInputs = () => {
 const popupWithProfile = new PopupWithForm({
     popupSelector: ".popup_edit-profile",
     handleSubmitForm: () => {
-        renderLoading(true, '.popup_edit-profile');
+        popupWithProfile.renderLoading(true, 'Сохранение...');
         api.editUsersProfile({
                 name: nameInput.value,
                 about: jobInput.value
             })
             .then((userData) => {
                 userInfo.setUserInfo(userData)
+                popupWithProfile.closePopup()
             })
             .catch(error => console.log(error))
-            .finally(renderLoading(false, '.popup_edit-profile'))
-        popupWithProfile.closePopup()
+            .finally(popupWithProfile.renderLoading(false, 'Сохранить'))
+
 
     }
 })
@@ -172,12 +172,13 @@ const popupWithProfile = new PopupWithForm({
 const popupUpdateAvatar = new PopupWithForm({
     popupSelector: ".popup_update-avatar",
     handleSubmitForm: () => {
-        renderLoading(true, '.popup_update-avatar');
+        popupUpdateAvatar.renderLoading(true, 'Сохранение...');
         api.updateAvatar(popupUpdateAvatar._getInputValues())
             .then((res) => userInfo.setUserInfo(res))
-            .catch(error => console.log(error))
-            .finally(renderLoading(false, '.popup_update-avatar'))
         popupUpdateAvatar.closePopup()
+            .catch(error => console.log(error))
+            .finally(popupUpdateAvatar.renderLoading(false, 'Сохранить'))
+
     }
 
 })
@@ -188,19 +189,6 @@ const openUpdateAvatarPopup = function() {
     popupUpdateAvatar.openPopup()
 }
 
-// функция отображения процесса обработки запроса
-const renderLoading = function(isLoading, popupSelector) {
-    const popupSubmitButton = document.querySelector(popupSelector).querySelector('.popup__submit-button');
-    if (isLoading) {
-        popupSubmitButton.textContent = 'Сохранение...'
-    } else {
-        if (popupSelector === '.popup_add-place') {
-            popupSubmitButton.textContent = 'Создать'
-        } else {
-            popupSubmitButton.textContent = 'Сохранить'
-        }
-    }
-}
 
 
 Promise.all(
@@ -223,6 +211,7 @@ popupWithProfile.setEventListeners()
 popupWithCard.setEventListeners()
 popupWithImage.setEventListeners()
 popupUpdateAvatar.setEventListeners()
+popupConfirmDelete.setEventListeners()
 
 
 //работа с валидацией форм добавления места и редактирования профайла

@@ -9,3 +9,4 @@ export const nameInput = formEditProfile.querySelector(".popup__input_type_name"
 export const jobInput = formEditProfile.querySelector(".popup__input_type_job");
 export const popupUpdateAvatarOpenButton = document.querySelector(".profile__updateAvatar-button");
 export const formUpdateAvatar = document.querySelector(".form_update-avatar")
+export const ESC_KEY = "Escape";

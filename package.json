@@ -1,42 +1,42 @@
 {
-  "name": "mesto",
-  "version": "1.0.0",
-  "description": "*Проектрая работа №4, №5, №6, №7.*",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Anel1da/mesto.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Anel1da/mesto/issues"
-  },
-  "homepage": "https://github.com/Anel1da/mesto#readme",
-  "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "autoprefixer": "^10.2.5",
-    "babel-loader": "^8.2.2",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^5.2.0",
-    "gh-pages": "^3.1.0",
-    "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.4.0",
-    "postcss-loader": "^5.2.0",
-    "webpack": "^5.31.2",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
-  },
-  "dependencies": {
-    "core-js": "^3.10.0",
-    "cssnano": "^4.1.10"
-  }
+    "name": "mesto",
+    "version": "1.0.0",
+    "description": "*Проектрая работа №4, №5, №6, №7.*",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack",
+        "dev": "webpack serve",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Anel1da/mesto.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Anel1da/mesto/issues"
+    },
+    "homepage": "https://github.com/Anel1da/mesto#readme",
+    "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/preset-env": "^7.13.12",
+        "autoprefixer": "^10.2.5",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^5.2.0",
+        "gh-pages": "^3.1.0",
+        "html-webpack-plugin": "^5.3.1",
+        "mini-css-extract-plugin": "^1.4.0",
+        "postcss-loader": "^5.2.0",
+        "webpack": "^5.31.2",
+        "webpack-cli": "^4.6.0",
+        "webpack-dev-server": "^3.11.2",
+        "cssnano": "^4.1.10"
+    },
+    "dependencies": {
+        "core-js": "^3.10.0"
+    }
 }
