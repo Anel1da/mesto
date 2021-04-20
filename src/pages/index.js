@@ -97,7 +97,7 @@ const popupWithCard = new PopupWithForm({
             .catch(error => console.log(error))
             .finally(popupWithCard.renderLoading(false, 'Создать'))
 
-        popupWithCard.closePopup()
+
     }
 
 })
@@ -158,6 +158,7 @@ const popupWithProfile = new PopupWithForm({
             })
             .then((userData) => {
                 userInfo.setUserInfo(userData)
+                userInfo.setUserAvatar(userData)
                 popupWithProfile.closePopup()
             })
             .catch(error => console.log(error))
@@ -174,9 +175,12 @@ const popupUpdateAvatar = new PopupWithForm({
     handleSubmitForm: () => {
         popupUpdateAvatar.renderLoading(true, 'Сохранение...');
         api.updateAvatar(popupUpdateAvatar._getInputValues())
-            .then((res) => userInfo.setUserInfo(res))
-        popupUpdateAvatar.closePopup()
-            .catch(error => console.log(error))
+            .then((res) => {
+                userInfo.setUserAvatar(res)
+                popupUpdateAvatar.closePopup()
+            })
+
+        .catch(error => console.log(error))
             .finally(popupUpdateAvatar.renderLoading(false, 'Сохранить'))
 
     }
@@ -198,6 +202,7 @@ Promise.all(
     ).then(result => {
         const [userData, initialCards] = result;
         userInfo.setUserInfo(userData);
+        userInfo.setUserAvatar(userData);
         user = userData
         initalCardList.renderItems(initialCards);
 
