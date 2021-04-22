@@ -14,11 +14,14 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__photo" src="c15cb08ab8ecfaba54c6.jpg" alt="Аватар пользователя">
+            <div class="profile__avatar">
+                <img class="profile__photo" src="#" alt="Аватар пользователя">
+                <button class="profile__updateAvatar-button"></button>
+            </div>
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name"></h1>
                 <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
-                <p class="profile__job">Исследователь океана</p>
+                <p class="profile__job"></p>
             </div>
             <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
         </section>
@@ -30,8 +33,11 @@
                     <button class="place__remove-icon" type="button" aria-label="Удалить карточку"></button>
                     <figcaption class="place__discription">
                         <h2 class="place__title"></h2>
+                        <div class="place__like-container"> 
+
                         <button class="place__like-icon" type="button" aria-label="Мне нравится"></button>
-                     
+                     <div class="place__like-counter">0</div>
+                    </div>
                     </figcaption>
                 </figure>
             </template>
@@ -65,11 +71,11 @@
             <h2 class="popup__title">Новое место</h2>
             <form class="form form_add-place" name="add-place" novalidate>
                 <label class="popup__label">
-                <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="placeTitle" placeholder="Название" minlength="2" maxlength="30" required>
+                <input id="place-title" class="popup__input popup__input_type_place-title" type="text" name="name" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__input-error" id="place-title-error"></span>
             </label>
                 <label class="popup__label">
-                <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="placeImage" placeholder="Ссылка на картинку" required>
+                <input id="place-image" class="popup__input popup__input_type_place-image" type="url" name="link" placeholder="Ссылка на картинку" required>
                 <span class="popup__input-error" id="place-image-error"></span>
             </label>
                 <button class="popup__submit-button popup__submit-button_add-place" type="submit">Создать</button>
@@ -89,6 +95,29 @@
             </figure>
         </div>
     </section>
+    <section class="popup popup_confim_delete">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_confim_delete" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <form class="form form_confim_delete" name="confim_delete" novalidate>
+                <button class="popup__submit-button popup__submit-button_delete" type="submit">Да</button>
+            </form>
+        </div>
+    </section>
+    <section class="popup popup_update-avatar">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_update-avatar" type="button" aria-label="Закрыть окно"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="form form_update-avatar" name="update-avatar" novalidate>
+                <label class="popup__label">
+                    <input id="avatar" class="popup__input popup__input_type_avatar" type="url" name="link" placeholder="Ссылка на фото" required>
+                    <span class="popup__input-error" id="avatar-error"></span>
+                </label>
+                <button class="popup__submit-button popup__submit-button_update-avatar" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
 </body>
 
 </html>
